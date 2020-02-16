@@ -1,0 +1,27 @@
+server:
+  port: 18081
+
+# shiro 路径配置
+shiro:
+  loginUrl: https://127.0.0.1:8080/cas/login?service=http://127.0.0.1:18081/shiro-cas
+  logoutUrl: https://127.0.0.1:8080/cas/logout?service=http://127.0.0.1:18081/shiro-cas
+  successUrl: /
+  failureUrl: /login
+  # 过滤器配置
+  casFilterUrlPattern: /shiro-cas
+  unauthorizedUrl: /unauthorizedUrl.html
+  logoutUrlPattern: /logout
+#  "[]" 转义字符
+  authUrlPatternMap: {"[/**]": authc}
+#    - {"/**":authc}
+  cas:
+    serverUrlPrefix: https://127.0.0.1:8080/cas
+    service: http://127.0.0.1:18081/shiro-cas
+
+#thymeleaf配置
+spring:
+  thymeleaf:
+    prefix: /templates/**
+    suffix: .html
+  resources:
+    static-locations: classpath:/META-INF/resources/, classpath:/resources/, classpath:/static/, classpath:/public/, classpath:/templates/
